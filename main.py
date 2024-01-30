@@ -14,12 +14,7 @@ def main(page: ft.Page):
 
     page.title = "FTQRCode"
     page.appbar = ft.AppBar(title=ft.Text(page.title))
-    qrcode_img = ft.Image(
-        "assets/icon.png",
-        width=100,
-        height=100
-        
-    )
+    qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
     url = ft.TextField()
     btn = ft.TextButton(text="Generate", on_click=generate)
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, btn])))
