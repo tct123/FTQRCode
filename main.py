@@ -21,8 +21,8 @@ def main(page: ft.Page):
             factory = qrcode.image.svg.SvgPathImage
 
         img = qrcode.make(data=url.value, image_factory=factory)
-        name = "qr"
-        #img.save(name)
+        name = "qr.svg"
+        img.save(name)
         qrcode_img.src = name
         qrcode_img.update()
 
@@ -31,7 +31,12 @@ def main(page: ft.Page):
     qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
     btn = ft.TextButton(text="Generate", on_click=generate)
-    selector = ft.Dropdown(options=[ft.dropdown.Option(option) for option in mylist])
+    selector = ft.Dropdown(
+        options=[ft.dropdown.Option(option) for option in mylist],
+        enable_feedback=True,
+        hint_content="test",
+        value="basic",
+    )
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
 
 
