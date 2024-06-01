@@ -21,7 +21,7 @@ def main(page: ft.Page):
             factory = qrcode.image.svg.SvgPathImage
 
         img = qrcode.make(data=url.value) #image_factory=factory)
-        name = "qr.svg"
+        name = "qr.png"
         img.save(name)
         qrcode_img.src = name
         qrcode_img.update()
