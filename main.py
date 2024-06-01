@@ -9,10 +9,11 @@ from mylist import mylist
 def main(page: ft.Page):
     def generate(e):
         filename = datetime.now()
-        if method == "basic":
+        print(selector.value.upper())
+        if selector.value == "basic":
             # Simple factory, just a set of rects.
             factory = qrcode.image.svg.SvgImage
-        elif method == "fragment":
+        elif selector.value == "fragment":
             # Fragment factory (also just a set of rects)
             factory = qrcode.image.svg.SvgFragmentImage
         else:
@@ -20,7 +21,7 @@ def main(page: ft.Page):
             factory = qrcode.image.svg.SvgPathImage
 
         img = qrcode.make(data=url.value)
-        name = f"{filename}qr.png"
+        name = f"{filename}qr.svg"
         img.save(name)
         qrcode_img.src = name
         qrcode_img.update()
@@ -30,8 +31,8 @@ def main(page: ft.Page):
     qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
     btn = ft.TextButton(text="Generate", on_click=generate)
-    selector = ft.Dropdown(options=[])
-    page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, btn])))
+    selector = ft.Dropdown(options=[ft.dropdown.Option(option) for option in mylist])
+    page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
 
 
 ft.app(main)
