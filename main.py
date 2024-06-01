@@ -3,6 +3,7 @@ import qrcode
 import qrcode.image.svg
 from datetime import datetime
 from mylocale.TR import tr
+from mylist import mylist
 
 
 def main(page: ft.Page):
@@ -29,6 +30,7 @@ def main(page: ft.Page):
     qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
     btn = ft.TextButton(text="Generate", on_click=generate)
+    selector = ft.Dropdown(options=[])
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, btn])))
 
 
