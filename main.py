@@ -20,9 +20,9 @@ def main(page: ft.Page):
             # Combined path factory, fixes white space that may occur when zooming
             factory = qrcode.image.svg.SvgPathImage
 
-        img = qrcode.make(data=url.value)
-        name = f"{filename}qr.svg"
-        img.save(name)
+        img = qrcode.make(data=url.value, image_factory=factory)
+        name = "qr"
+        #img.save(name)
         qrcode_img.src = name
         qrcode_img.update()
 
