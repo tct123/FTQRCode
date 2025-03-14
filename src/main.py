@@ -35,8 +35,6 @@ def main(page: ft.Page):
     btn = ft.TextButton(text="Generate", on_click=generate)
     selector = ft.Dropdown(
         options=[ft.dropdown.Option(option) for option in mylist],
-        enable_feedback=True,
-        hint_content="test",
         value="basic",
     )
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
