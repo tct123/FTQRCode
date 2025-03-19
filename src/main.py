@@ -9,25 +9,26 @@ import os
 
 def main(page: ft.Page):
     def generate(e):
-        filename = datetime.now()
-        print(selector.value.upper())
-        if selector.value == "basic":
-            # Simple factory, just a set of rects.
-            factory = qrcode.image.svg.SvgImage
-        elif selector.value == "fragment":
-            # Fragment factory (also just a set of rects)
-            factory = qrcode.image.svg.SvgFragmentImage
-        else:
-            # Combined path factory, fixes white space that may occur when zooming
-            factory = qrcode.image.svg.SvgPathImage
+        name = os.path.join(os.getenv("FLET_APP_STORAGE_TEMP"), "qr.svg")
+        try:
+            pass
+        except:
+            if selector.value == "basic":
+                # Simple factory, just a set of rects.
+                factory = qrcode.image.svg.SvgImage
+            elif selector.value == "fragment":
+                # Fragment factory (also just a set of rects)
+                factory = qrcode.image.svg.SvgFragmentImage
+            else:
+                # Combined path factory, fixes white space that may occur when zooming
+                factory = qrcode.image.svg.SvgPathImage
 
-        img = qrcode.make(
-            data=url.value, image_factory=factory
-        )  # image_factory=factory
-        name = "qr.svg"
-        img.save(name)
-        qrcode_img.src = name
-        qrcode_img.update()
+            img = qrcode.make(
+                data=url.value, image_factory=factory
+            )  # image_factory=factory
+            img.save(name)
+            qrcode_img.src = name
+            qrcode_img.update()
 
     page.title = "FTQRCode"
     page.appbar = ft.AppBar(title=ft.Text(page.title))
