@@ -4,6 +4,7 @@ import qrcode.image.svg
 from datetime import datetime
 from mylocale.TR import tr
 from mylist import mylist
+import os
 
 
 def main(page: ft.Page):
