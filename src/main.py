@@ -10,9 +10,9 @@ import os
 def main(page: ft.Page):
     def generate(e):
         name = os.path.join(os.getenv("FLET_APP_STORAGE_TEMP"), "qr.svg")
-        try:
-            pass
-        except:
+        print(name)
+        if os.path.exists(name):
+            os.remove(name)
             if selector.value == "basic":
                 # Simple factory, just a set of rects.
                 factory = qrcode.image.svg.SvgImage
@@ -29,6 +29,25 @@ def main(page: ft.Page):
             img.save(name)
             qrcode_img.src = name
             qrcode_img.update()
+            page.update()
+        else:
+            if selector.value == "basic":
+                # Simple factory, just a set of rects.
+                factory = qrcode.image.svg.SvgImage
+            elif selector.value == "fragment":
+                # Fragment factory (also just a set of rects)
+                factory = qrcode.image.svg.SvgFragmentImage
+            else:
+                # Combined path factory, fixes white space that may occur when zooming
+                factory = qrcode.image.svg.SvgPathImage
+
+            img = qrcode.make(
+                data=url.value, image_factory=factory
+            )  # image_factory=factory
+            img.save(name)
+            qrcode_img.src = name
+            qrcode_img.update()
+            page.update()
 
     page.title = "FTQRCode"
     page.appbar = ft.AppBar(title=ft.Text(page.title))
@@ -39,6 +58,7 @@ def main(page: ft.Page):
         options=[ft.dropdown.Option(option) for option in mylist],
         value="basic",
     )
+    print(page.theme.appbar_theme)
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
 
 
