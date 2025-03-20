@@ -25,7 +25,7 @@ def main(page: ft.Page):
 
             img = qrcode.make(
                 data=url.value, image_factory=factory
-            )  # image_factory=factory
+            ) 
             img.save(name)
             qrcode_img.src = name
             qrcode_img.update()
