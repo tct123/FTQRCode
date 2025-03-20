@@ -58,7 +58,6 @@ def main(page: ft.Page):
         options=[ft.dropdown.Option(option) for option in mylist],
         value="basic",
     )
-    print(page.theme.appbar_theme)
     page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
 
 
