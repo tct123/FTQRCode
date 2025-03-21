@@ -27,6 +27,7 @@ def main(page: ft.Page):
 
     def generate(e):
         name = os.path.join(os.getenv("FLET_APP_STORAGE_TEMP"), "qr.svg")
+        page.adaptive = True
         print(name)
         if os.path.exists(name):
             os.remove(name)
@@ -68,7 +69,12 @@ def main(page: ft.Page):
     page.appbar = ft.AppBar(title=ft.Text(page.title))
     page.navigation_bar = ft.NavigationBar(
         on_change=handle_nav_change,
-        destinations=[ft.NavigationBarDestination(icon=ft.Icons.CAMERA_ALT_OUTLINED, selected_icon=ft.Icons.CAMERA_ALT),ft.NavigationBarDestination],
+        destinations=[
+            ft.NavigationBarDestination(
+                icon=ft.Icons.CAMERA_ALT_OUTLINED, selected_icon=ft.Icons.CAMERA_ALT
+            ),
+            ft.NavigationBarDestination(icon=ft.Icons.QR_CODE),
+        ],
     )
     qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
