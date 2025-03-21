@@ -71,9 +71,13 @@ def main(page: ft.Page):
         on_change=handle_nav_change,
         destinations=[
             ft.NavigationBarDestination(
-                icon=ft.Icons.CAMERA_ALT_OUTLINED, selected_icon=ft.Icons.CAMERA_ALT
+                icon=ft.Icons.CAMERA_ALT_OUTLINED,
+                selected_icon=ft.Icons.CAMERA_ALT,
+                label="Scan",
             ),
-            ft.NavigationBarDestination(icon=ft.Icons.QR_CODE),
+            ft.NavigationBarDestination(
+                icon=ft.Icons.QR_CODE, label="Generate QR-Code"
+            ),
         ],
     )
     qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
