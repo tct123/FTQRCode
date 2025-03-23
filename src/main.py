@@ -19,7 +19,12 @@ def main(page: ft.Page):
             page.add(
                 ft.SafeArea(
                     ft.Column(
-                        controls=[qrcode_img, url, selector, btn],
+                        controls=[
+                            ft.Container(alignment=ft.alignment.center,content=qrcode_img, expand=True),
+                            ft.Container(alignment=ft.alignment.center,content=url, expand=True),
+                            ft.Container(alignment=ft.alignment.center,content=selector, expand=True),
+                            ft.Container(alignment=ft.alignment.center,content=btn, expand=True),
+                        ],
                         expand=True,
                         alignment=ft.MainAxisAlignment.CENTER,
                     )
@@ -91,13 +96,12 @@ def main(page: ft.Page):
     qrcode_img = ft.Image(src="icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
     btn = ft.TextButton(
-        text="Generate", on_click=generate, expand=True, width=page.width
+        text="Generate", on_click=generate, expand=True
     )
     selector = ft.Dropdown(
         options=[ft.dropdown.Option(option) for option in mylist],
         value="basic",
         expand=True,
-        width=page.width,
     )
     set_selected_index()
 
