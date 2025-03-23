@@ -16,7 +16,15 @@ def main(page: ft.Page):
             else e.control.selected_index
         )
         if selected_index == 0:
-            page.add(ft.SafeArea(ft.Column(controls=[qrcode_img, url, selector, btn])))
+            page.add(
+                ft.SafeArea(
+                    ft.Column(
+                        controls=[qrcode_img, url, selector, btn],
+                        expand=True,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                )
+            )
         elif selected_index == 1:
             page.add(ft.Text("Commute!"))
         page.update()
@@ -80,12 +88,16 @@ def main(page: ft.Page):
             ),
         ],
     )
-    qrcode_img = ft.Image("assets/icon.png", width=100, height=100)
+    qrcode_img = ft.Image(src="icon.png", width=100, height=100)
     url = ft.TextField(label="Value")
-    btn = ft.TextButton(text="Generate", on_click=generate)
+    btn = ft.TextButton(
+        text="Generate", on_click=generate, expand=True, width=page.width
+    )
     selector = ft.Dropdown(
         options=[ft.dropdown.Option(option) for option in mylist],
         value="basic",
+        expand=True,
+        width=page.width,
     )
     set_selected_index()
 
