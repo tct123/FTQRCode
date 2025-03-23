@@ -5,6 +5,7 @@ from datetime import datetime
 from mylocale.TR import tr
 from mylist import mylist
 import os
+from localisation import *
 
 
 def main(page: ft.Page):
@@ -43,7 +44,7 @@ def main(page: ft.Page):
                 )
             )
         elif selected_index == 1:
-            page.add(ft.Text("Commute!"))
+            page.add(ft.Text(COMMUTEMSG(page=page)))
         page.update()
 
     def set_selected_index():
@@ -98,16 +99,16 @@ def main(page: ft.Page):
             ft.NavigationBarDestination(
                 icon=ft.Icons.CAMERA_ALT_OUTLINED,
                 selected_icon=ft.Icons.CAMERA_ALT,
-                label="Scan",
+                label=SCANMSG(page=page),
             ),
             ft.NavigationBarDestination(
-                icon=ft.Icons.QR_CODE, label="Generate QR-Code"
+                icon=ft.Icons.QR_CODE, label=GENERATETABMSG(page=page)
             ),
         ],
     )
     qrcode_img = ft.Image(src="icon.png", width=100, height=100)
-    url = ft.TextField(label="Value")
-    btn = ft.TextButton(text="Generate", on_click=generate, expand=True)
+    url = ft.TextField(label=VALUEMSG(page=page))
+    btn = ft.TextButton(text=GENERATEBTNMSG(page=page), on_click=generate, expand=True)
     selector = ft.Dropdown(
         options=[ft.dropdown.Option(option) for option in mylist],
         value="basic",

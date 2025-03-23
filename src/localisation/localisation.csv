@@ -1,2 +1,6 @@
-stringname,en
-HELLOWORLD,Hello World
+stringname,en,de
+SCAN,Scan,Scanner
+GENERATEBTN,Generate,Generieren
+GENERATETAB,Generate QR-Qode,QR-Code generieren
+VALUE,Value,Wert
+COMMUTE,Commute!,Pendeln!
