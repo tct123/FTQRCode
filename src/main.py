@@ -6,7 +6,7 @@ from mylocale.TR import tr
 from mylist import mylist
 import os
 from localisation import *
-from camera import CameraMaster
+from camera import *
 
 
 def main(page: ft.Page):
@@ -45,7 +45,7 @@ def main(page: ft.Page):
                 )
             )
         elif selected_index == 1:
-            page.add(ft.Text(COMMUTEMSG(page=page)))
+            page.add(camera(page=page))
         page.update()
 
     def set_selected_index():
