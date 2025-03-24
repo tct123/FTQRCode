@@ -6,6 +6,7 @@ from mylocale.TR import tr
 from mylist import mylist
 import os
 from localisation import *
+from camera import CameraMaster
 
 
 def main(page: ft.Page):
