@@ -12,6 +12,7 @@ dependencies = [
     "flet-localisation",
     "pyzbar",
     "pillow",
+    "opencv-python",
 ]
 
 [tool.flet.android]
