@@ -13,6 +13,7 @@ dependencies = [
     "pyzbar",
     "pillow",
     "opencv-python",
+    "flet-barcode-scanner @ git+https://github.com/AyberkA0/flet-barcode-scanner",
 ]
 
 [tool.flet.android]
